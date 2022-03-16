@@ -1,5 +1,7 @@
 const express = require("express"); //imports express framework 
+  morgan = require('morgan'); //importing morgan
 const app = express(); //Declares a variable that encapsulates express's functionality 
+  app.use(morgan('common'))
 
 //Get Requests 
 app.get('/', (req, res) => {
@@ -18,3 +20,14 @@ app.get('/movies', (req, res) => {
 
 //Static files to serve documentation.html file from public folder 
 app.use(express.static('public'));
+
+//Error Handling 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+//listens to the three request from above and links them to port 8080
+app.listen(8080, () => {
+  console.log('Your app is listening on port 8080.');
+});

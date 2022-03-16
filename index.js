@@ -1,7 +1,31 @@
 const express = require("express"); //imports express framework 
   morgan = require('morgan'); //importing morgan
 const app = express(); //Declares a variable that encapsulates express's functionality 
-  app.use(morgan('common'))
+  
+app.use(morgan('common'))
+
+let topMovies = [
+  {
+    title: 'Cool Hand Luke',
+    director: 'Stuart Rosenberg'
+  },
+  {
+    title: 'The Batman',
+    director: 'Matt Reeves'
+  },
+  {
+    title: 'Star Wars: Episode VI - Return of the Jedi',
+    director: 'Richard Marquand'
+  },
+  {
+    title: 'The Shining',
+    director: 'Stanley Kubrick'
+  },
+  {
+    title: 'Stand by Me',
+    director: 'Rob Reiner'
+  }
+];
 
 //Get Requests 
 app.get('/', (req, res) => {

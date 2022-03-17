@@ -1,8 +1,8 @@
 const express = require("express"); //imports express framework 
+  app = express(); //Declares a variable that encapsulates express's functionality 
   bodyParser = require('body-parser'); //imports body parser
   uuid = require('uuid')//imports uuid
   
-const app = express(); //Declares a variable that encapsulates express's functionality 
 
 app.use(bodyParser.json());
   
@@ -43,7 +43,7 @@ app.get('/documentation', (req, res) => {
 
 //Will return info containing data about top 10 movies 
 app.get('/movies', (req, res) => {
-  res.json(topMovies);
+  res.status(200).json(topMovies);
 });
 
 //Static files to serve documentation.html file from public folder 

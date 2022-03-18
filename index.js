@@ -1,12 +1,12 @@
 const express = require("express");//imports express framework 
 const app = express(); //Declares a variable that encapsulates express's functionality 
-  bodyParser = require('body-parser'); //imports body parser
-  morgan = require('morgan');
-  uuid = require('uuid');//imports uuid
+const bodyParser = require('body-parser'); //imports body parser
+const morgan = require('morgan');//imports morgan
+const uuid = require('uuid');//imports uuid
   
 
 app.use(bodyParser.json());
-app.use(morgan('common'))
+app.use(morgan('common'));
 
 let users = [
   {

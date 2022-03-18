@@ -82,6 +82,18 @@ app.get('/movies', (req, res) => {
   res.status(200).json(movies);
 });
 
+//CREATE
+app.post('/users', (req, res) => {
+  const newUser = req.body;
+
+  if (newUser.name) {
+    newUser.id = uuid.v4();
+    users.push(newUser);
+    res.status(201).json(newUser)
+  } else {
+    res.status(400).send('users need names')
+  }
+});
 
 //READ
 app.get('/movies/:title', (req, res) => {
@@ -119,18 +131,7 @@ app.get('/movies/directors/directorName', (req, res) => {
   }
 });
 
-//CREATE
-app.post('/users', (req, res) => {
-  const newUser = req.body;
 
-  if (newUser.name) {
-    newUser.id = uuid.v4();
-    users.push(newUser);
-    res.status(201).json(newUser)
-  } else {
-    res.status(400).send('users need names')
-  }
-});
 
 //UPDATE
 app.put('/users/:id', (req, res) => {
@@ -204,8 +205,7 @@ app.use((err, req, res, next) => {
 });
 
 //listens to the three request from above and links them to port 8080
-app.listen(8080, () => {
-  console.log('Your app is listening on port 8080.');
+app.listen(8080, () => { console.log('Your app is listening on port 8080.');
 });
 
 

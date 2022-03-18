@@ -1,8 +1,8 @@
-const express = require("express");//imports express framework 
-const app = express(); //Declares a variable that encapsulates express's functionality 
-const bodyParser = require('body-parser'); //imports body parser
-const morgan = require('morgan');//imports morgannod
-const uuid = require('uuid');//imports uuid
+const express = require("express"),//imports express framework 
+  app = express(), //Declares a variable that encapsulates express's functionality 
+  bodyParser = require('body-parser'), //imports body parser
+  morgan = require('morgan'),//imports morgannod
+  uuid = require('uuid');//imports uuid
   
  
 app.use(bodyParser.json());
@@ -82,19 +82,6 @@ app.get('/movies', (req, res) => {
   res.status(200).json(movies);
 });
 
-//CREATE
-app.post('/users', (req, res) => {
-  const newUser = req.body;
-
-  if (newUser.name) {
-    newUser.id = uuid.v4();
-    users.push(newUser);
-    res.status(201).json(newUser)
-  } else {
-    res.status(400).send('users need names')
-  }
-});
-
 //READ
 app.get('/movies/:title', (req, res) => {
   const { title } = req.params;
@@ -120,7 +107,7 @@ app.get('/movies/genre:genreName', (req, res) => {
 });
 
 //READ
-app.get('/movies/directors/directorName', (req, res) => {
+app.get('/movies/directors/:directorName', (req, res) => {
   const { directorName } = req.params;
   const director = movies.find(movie => movie.Director.Name === directorName).Director;
   
@@ -132,6 +119,18 @@ app.get('/movies/directors/directorName', (req, res) => {
 });
 
 
+//CREATE
+app.post('/users', (req, res) => {
+  const newUser = req.body;
+
+  if (newUser.name) {
+    newUser.id = uuid.v4();
+    users.push(newUser);
+    res.status(201).json(newUser)
+  } else {
+    res.status(400).send('users need names')
+  }
+});
 
 //UPDATE
 app.put('/users/:id', (req, res) => {
@@ -167,7 +166,7 @@ app.delete('/users/:id/:movieTitle', (req, res) => {
 
   if (user) {
     user.favoriteMovies = user.favoriteMovies.filter(title => title !== movieTitle);
-    res.status(200).send(`${movieTtile} has been removed from user ${id}'s array`);
+    res.status(200).send(`${movieTitle} has been removed from user ${id}'s array`);
   } else {
     res.status(400).send('no such user')
   }

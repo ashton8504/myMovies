@@ -147,7 +147,7 @@ app.put('/users/:id', (req, res) => {
 });
 
 //CREATE
-app.put('/users/:id/:movieTitle', (req, res) => {
+app.post('/users/:id/:movieTitle', (req, res) => {
   const { id, movieTitle } = req.params;
   let user = users.find(user => user.id == id);
 

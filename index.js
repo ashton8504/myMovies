@@ -6,7 +6,7 @@ const uuid = require('uuid');//imports uuid
   
 
 app.use(bodyParser.json());
-app.use(morgan('common'));
+app.use(morgan ('common'));
 
 let users = [
   {

@@ -84,6 +84,11 @@ let movies = [
   },
 ];
 
+//Get Requests
+app.get('/', (req, res) => {
+    res.send('Welcome to myMovie website! ')
+});
+
 //Add a user
 app.post('/users', (req, res) => {
   Users.findOne({ Username: req.body.Username })
@@ -111,11 +116,6 @@ app.post('/users', (req, res) => {
       });
 });
 
-//Get Requests 
-app.get('/', (req, res) => {
-  res.send('Welcome to myMovie website! ')
-});
-
 //Get all Users
 app.get('/users', (req, res) => {
   Users.find()
@@ -126,6 +126,18 @@ app.get('/users', (req, res) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
       });
+});
+
+//Get all Movies
+app.get('/movies', (req, res) => {
+    Movies.find()
+        .then((movies) => {
+            res.status(201).json(movies);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 // Get a user by username
@@ -140,6 +152,40 @@ app.get('/users/:Username', (req, res) => {
       });
 });
 
+//Get all movies by title
+app.get('/movies/:Title', (req, res) => {
+    Movies.findOne({ Title: req.params.Title })
+        .then((movie) => {
+            res.json(movie);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
+
+//Get all genres by name
+app.get('/genre/:Name', (req, res) => {
+    Genres.findOne({ Name: req.params.Name })
+        .then((genre) => {
+            res.json(genre.Description);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
+
+app.get('/director/:Name', (req, res) => {
+    Directors.findOne({ Name: req.params.Name })
+        .then((director) => {
+            res.json(director);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
 //Update a users' info by username
 app.put('/users/:Username', (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, { $set:

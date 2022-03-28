@@ -12,7 +12,7 @@ const Users = Models.User;
 const Genres = Models.Genre;
 const Directors = Models.Director;
 
-mongoose.connect('mongodb://localhost:27017/myMoviesDB', {
+mongoose.connect('mongodb://localhost:27017/[myMoviesDB]', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

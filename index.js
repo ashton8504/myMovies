@@ -181,7 +181,7 @@ app.delete('/users/:Username', (req, res) => {
 // });
 
 //Static files to serve documentation.html file from public folder 
-app.use(express.static('public'));
+app.use("/documentation", express.static('public'));
 
 //Error Handling 
 app.use((err, req, res, next) => {

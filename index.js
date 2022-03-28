@@ -17,8 +17,6 @@ mongoose.connect('mongodb://localhost:27017/myMoviesDB', {
   useUnifiedTopology: true
 });
 
-
-
 app.use(bodyParser.json());
 app.use(morgan ('common'));//log requests to server
 
@@ -182,10 +180,10 @@ app.delete('/users/:Username', (req, res) => {
 //   res.sendFile('public/documentation.html', { root: __dirname });
 // });
 
-//Static files to serve documentation.html file from public folder 
+//Static files to serve documentation.html file from public folder
 app.use ( express.static('public'));
 
-//Error Handling 
+//Error Handling
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');

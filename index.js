@@ -17,6 +17,11 @@ mongoose.connect('mongodb://localhost:27017/[myMoviesDB]', {
   useUnifiedTopology: true
 });
 
+mongoose.connect('mongodb://localhost:27017/[users]', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
 app.use(bodyParser.json());
 app.use(morgan ('common'));//log requests to server
 

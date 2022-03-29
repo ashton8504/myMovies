@@ -17,11 +17,6 @@ mongoose.connect('mongodb://localhost:27017/[myMoviesDB]', {
   useUnifiedTopology: true
 });
 
-mongoose.connect('mongodb://localhost:27017/[users]', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-
 app.use(bodyParser.json());
 app.use(morgan ('common'));//log requests to server
 
@@ -197,5 +192,7 @@ app.use((err, req, res, next) => {
 //listens to the three request from above and links them to port 8080
 app.listen(8080, () => { console.log('Your app is listening on port 8080.');
 });
+
+
 
 

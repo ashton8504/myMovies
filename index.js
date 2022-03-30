@@ -12,6 +12,11 @@ const Users = Models.User;
 const Genres = Models.Genre;
 const Directors = Models.Director;
 
+
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./passport');
+
 mongoose.connect('mongodb://localhost:27017/[myMoviesDB]', {
   useNewUrlParser: true,
   useUnifiedTopology: true

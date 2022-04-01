@@ -32,7 +32,7 @@ passport.use(new LocalStrategy({
         return callback(null, user);
     });
 }));
- 
+
 
 passport.use(new JWTStrategy({
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),

@@ -28,9 +28,9 @@ const { check, validationResult } = require('express-validator');
 //   useUnifiedTopology: true
 // });
 
-mongoose.connect('mongodb+srv://myMoviesDB:Lokys_123!@mymoviesdb.ozmim.mongodb.net/myMoviesDB?retryWrites=true&w=majority', {
+mongoose.connect( process.env.CONNECTION_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true 
 });
 
 app.use(bodyParser.json());

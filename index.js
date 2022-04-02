@@ -23,9 +23,14 @@ require('./passport');
 //input validate
 const { check, validationResult } = require('express-validator');
 
-mongoose.connect('mongodb://localhost:27017/[myMoviesDB]', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+// mongoose.connect('mongodb://localhost:27017/[myMoviesDB]', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+
+mongoose.connect('mongodb+srv://myMoviesDB:Lokys_123!@mymoviesdb.ozmim.mongodb.net/myMoviesDB?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 app.use(bodyParser.json());

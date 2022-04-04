@@ -19,8 +19,8 @@ app.use(cors());
 let auth = require("./auth.js");
 const passport = require("passport");
 require("./passport");
-auth(app);
- 
+auth(app);    
+
 // let auth = require('./auth')(app);
 // const passport = require('passport');
 // require('./passport');

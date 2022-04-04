@@ -1,5 +1,0 @@
-
-{"_id" : ObjectId("623cd76bb927fae6c79168a3"),"UserName" : "Ashton Little","Password" : "1234","Email" : "ashton@gmail.com","Birthday" : "01/01/1987", "FavoriteMovies" : [ObjectId("623cced9b927fae6c79168a0")]}
-{"_id" : ObjectId("623cd798b927fae6c79168a4"),"UserName" : "Jim Little","Password" : "483","Email" : "Jim@gmail.com","Birthday" : "01/01/1981"}
-{"_id" : ObjectId("623cd7bcb927fae6c79168a5"),"UserName" : "Neil Elkins","Password" : "3453","Email" : "Neil@gmail.com","Birthday" : "01/01/1986"}
-{"_id" : ObjectId("623cd7d8b927fae6c79168a6"),"UserName" : "Kyle Elkins","Password" : "0909","Email" : "Kyle@gmail.com","Birthday" : "01/01/1989"}

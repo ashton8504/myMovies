@@ -1,101 +1,105 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
   <meta charset="utf-8" />
   <title>myMovies</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
+
 <body>
-<h1>myMovies</h1>
-<p>The web application that will provide users with access to information about movies, directors, and genres.</p>
-<table>
-  <thead>
-  <tr>
-    <th>Request</th>
-    <th>URL - Endpoint</th>
-    <th>Query Parameter</th>
-    <th>Http Method</th>
-    <th>Request Data Format</th>
-    <th>Response</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>Return a list of all movies to the user</td>
-    <td>/movies</td>
-    <td>None</td>
-    <td>GET</td>
-    <td>None</td>
-    <td>A JSON object holding data about all the movies</td>
-  </tr>
-  <tr>
-    <td>Return data about a single movie by title to the user</td>
-    <td>/movies/:title</td>
-    <td>title</td>
-    <td>GET</td>
-    <td>None</td>
-    <td>A JSON object holding data about a single movie based on the title passed in the url containing (description, genre, director, image Url)</td>
-  </tr>
-  <tr>
-    <td>Return data about a genre by name/title (eg. Thriller)</td>
-    <td>/genre/:genreName</td>
-    <td>genreName</td>
-    <td>GET</td>
-    <td>None</td>
-    <td>A JSON object of movies based on genre passed in the url</td>
-  </tr>
-  <tr>
-    <td>Return data about a director by name</td>
-    <td>/director/:directorName</td>
-    <td>directorName</td>
-    <td>GET</td>
-    <td>None</td>
-    <td>A JSON object of movies based on director name passed in the url</td>
-  </tr>
-  <tr>
-    <td>Allow new users to register themselves</td>
-    <td>/users</td>
-    <td>None</td>
-    <td>POST</td>
-    <td>A JSON object about a user to be registered</td>
-    <td>A Json object about the user that is added with user id</td>
-  </tr>
-  <tr>
-    <td>Allow users to update their info ie. username</td>
-    <td>/users/:username</td>
-    <td>id</td>
-    <td>PUT</td>
-    <td>None</td>
-    <td>A Json object about the updated userName that is added with user id</td>
-  </tr>
-  <tr>
-    <td>Allow users to add movie to their favorites</td>
-    <td>/users/:username/movies/:title</td>
-    <td>movieTitle</td>
-    <td>POST</td>
-    <td>None</td>
-    <td>Returns a success message that the movie added to favorites</td>
-  </tr>
-  <tr>
-    <td>Allow users to remove movie from their favorites</td>
-    <td>/users/:username/movies/:title</td>
-    <td>movieTitle</td>
-    <td>DELETE</td>
-    <td>None</td>
-    <td>Returns a success message that the movie removed from favorites</td>
-  </tr>
-  <tr>
-    <td>Allow users to deregister</td>
-    <td>/users/:username</td>
-    <td>None</td>
-    <td>DELETE</td>
-    <td>None</td>
-    <td>Returns a success message that the user is removed</td>
-  </tr>
-  </tbody>
-</table>
+  <h1>myMovies</h1>
+  <p>The web application that will provide users with access to information about movies, directors, and genres.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Request</th>
+        <th>URL - Endpoint</th>
+        <th>Query Parameter</th>
+        <th>HTTP Method</th>
+        <th>Request Data Format</th>
+        <th>Response</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Return a list of all movies to the user</td>
+        <td>/movies</td>
+        <td>None</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about all the movies</td>
+      </tr>
+      <tr>
+        <td>Return data about a single movie by title to the user</td>
+        <td>/movies/:title</td>
+        <td>title</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about a single movie based on the title passed in the url containing
+          (description, genre, director, image Url)</td>
+      </tr>
+      <tr>
+        <td>Return data about a genre by name/title</td>
+        <td>/genre/:genreName</td>
+        <td>genreName</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object of movies based on genre passed in the url</td>
+      </tr>
+      <tr>
+        <td>Return data about a director by name</td>
+        <td>/director/:directorName</td>
+        <td>directorName</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object of movies based on director name passed in the url</td>
+      </tr>
+      <tr>
+        <td>Allow new users to register themselves</td>
+        <td>/users</td>
+        <td>None</td>
+        <td>POST</td>
+        <td>A JSON object about a user to be registered</td>
+        <td>A JSON object about the user that is added with user id</td>
+      </tr>
+      <tr>
+        <td>Allow users to update their info</td>
+        <td>/users/:username</td>
+        <td>id</td>
+        <td>PUT</td>
+        <td>None</td>
+        <td>A JSON object about the updated userName that is added with user id</td>
+      </tr>
+      <tr>
+        <td>Allow users to add movie to their favorites</td>
+        <td>/users/:username/movies/:title</td>
+        <td>movieTitle</td>
+        <td>POST</td>
+        <td>None</td>
+        <td>Returns a success message that the movie added to favorites</td>
+      </tr>
+      <tr>
+        <td>Allow users to remove movie from their favorites</td>
+        <td>/users/:username/movies/:title</td>
+        <td>movieTitle</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>Returns a success message that the movie removed from favorites</td>
+      </tr>
+      <tr>
+        <td>Allow users to deregister</td>
+        <td>/users/:username</td>
+        <td>None</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>Returns a success message that the user is removed</td>
+      </tr>
+    </tbody>
+  </table>
 </body>
+
 </html>
 
 
@@ -217,4 +221,3 @@
 <!--</table>-->
 <!--</body>-->
 <!--</html>-->
-

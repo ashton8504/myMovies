@@ -16,7 +16,7 @@ const Users = Models.User;
 const cors = require('cors');
 app.use(cors());
 
-let auth = require("./auth.js")(app);
+let auth = require("./auth.js");
 const passport = require("passport");
 require("./passport");
 auth(app);

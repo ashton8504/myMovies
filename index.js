@@ -43,6 +43,34 @@ app.get('/', (req, res) => {
     res.send('Welcome to myMovie website! ')
 });
 
+
+//create a movie
+app.post('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
+    Movies.findOne({ Title: req.body.Title })
+        .then((movie) => {
+            if (movie) {
+                return res.status(400).send(req.body.Title + 'already exists');
+            } else {
+                Movies
+                    .create({
+                        Title: req.body.Title,
+                        Description: req.body.Description,
+                        Genre: req.body.Genre.Name,
+                        Director: req.body.Director.Name,
+                    })
+                    .then((user) =>{res.status(201).json(user) })
+                    .catch((error) => {
+                        console.error(error);
+                        res.status(500).send('Error: ' + error);
+                    })
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error: ' + error);
+        });
+});
+
 //Add a user
 app.post('/users', passport.authenticate('jwt', { session:false }), (req, res) => {
   Users.findOne({ Username: req.body.Username })
@@ -164,11 +192,7 @@ app.put('/users/:Username', passport.authenticate('jwt', { session:false }), (re
 });
 
 app.post('/users',
-    // Validation logic here for request
-    //you can either use a chain of methods like .not().isEmpty()
-    //which means "opposite of isEmpty" in plain english "is not empty"
-    //or use .isLength({min: 5}) which means
-    //minimum value of 5 characters are only allowed
+
     [
         check('Username', 'Username is required').isLength({min: 5}),
         check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
@@ -209,6 +233,7 @@ app.post('/users',
                 res.status(500).send('Error: ' + error);
             });
     });
+
 // Add a movie to a user's list of favorites
 app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session:false }), (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.Username },

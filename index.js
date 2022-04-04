@@ -9,16 +9,21 @@ const Models = require('./models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
-const Genres = Models.Genre;
-const Directors = Models.Director;
+// const Genres = Models.Genre;
+// const Directors = Models.Director;
 
 //CORS integration
 const cors = require('cors');
 app.use(cors());
 
-let auth = require('./auth')(app);
-const passport = require('passport');
-require('./passport');
+let auth = require("./auth.js");
+const passport = require("passport");
+require("./passport");
+auth(app);
+
+// let auth = require('./auth')(app);
+// const passport = require('passport');
+// require('./passport');
 
 //input validate
 const { check, validationResult } = require('express-validator');

@@ -260,7 +260,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
         },
         { new: true }, // this line makes sure that the updated document is returned
         (err, updatedUser) => {
-            if (err) {
+            if (error & error != "ER_DUP_ENTRY") {
                 console.error(err);
                 res.status(500).send('Error: ' + err);
             } else {

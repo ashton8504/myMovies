@@ -66,7 +66,7 @@ app.get('/movies/:Title', passport.authenticate('jwt', { session:false }), (req,
         .then((movie) => {
             res.json(movie);
         })
-        .catch((err) => { 
+        .catch((err) => {
             console.error(err);
             res.status(500).send('Error: ' + err);
         });
@@ -109,14 +109,17 @@ app.get('/users/:Username', passport.authenticate('jwt', { session:false }), (re
 });
 
 
-app.get('/director/:Name', passport.authenticate('jwt', { session:false }), (req, res) => {
-    Movies.findOne({ 'Director.Name': req.params.Name })
+app.get('/director/:Name', passport.authenticate('jwt', {session: false}), (req, res) => {
+    Movies.findOne({ 'Director.Name': req.params.Name})
         .then((movie) => {
-            res.json(movie.Director);
+            if(movie){
+                res.status(200).json(movie.Director);
+            } else {
+                res.status(400).send('Director not found');
+            };
         })
         .catch((err) => {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
+            res.status(500).send('Error: '+ err);
         });
 });
 

@@ -79,7 +79,7 @@ app.get('/movies/:title', passport.authenticate('jwt', {session: false}), (req, 
 app.get('/genre/:Name', passport.authenticate('jwt', {session: false}), (req, res) => {
     Movies.findOne({ 'Genre.Name': req.params.Name})
         .then((movie) => {
-            if(movie){ 
+            if(movie){
                 res.status(200).json(movie.Genre);
             } else {
                 res.status(400).send('Genre not found');
@@ -107,7 +107,11 @@ app.get('/users', passport.authenticate('jwt', { session:false }), (req, res) =>
 app.get('/users/:Username', passport.authenticate('jwt', { session:false }), (req, res) => {
     Users.findOne({ Username: req.params.Username })
         .then((user) => {
-            res.json(user);
+            if(user){
+                res.status(200).json(user);
+            } else {
+                res.status(400).send('User Not Found');
+            };
         })
         .catch((err) => {
             console.error(err);

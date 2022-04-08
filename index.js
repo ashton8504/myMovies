@@ -61,28 +61,35 @@ app.get('/movies', passport.authenticate('jwt', { session:false }), (req, res) =
 });
 
 //Get all movies by title
-app.get('/movies/:Title', passport.authenticate('jwt', { session:false }), (req, res) => {
-    Movies.findOne({ Title: req.params.Title})
+app.get('/movies/:title', passport.authenticate('jwt', {session: false}), (req, res) => {
+    Movies.findOne({ Title: req.params.title})
         .then((movie) => {
-            res.json(movie);
+            if(movie){
+                res.status(200).json(movie);
+            } else {
+                res.status(400).send('Movie not found');
+            };
         })
         .catch((err) => {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
+            res.status(500).send('Error: '+ err);
         });
 });
 
 //Get all genres by name
-app.get('/genre/:Name', passport.authenticate('jwt', { session:false }), (req, res) => {
-    Movies.findOne({ 'Genre.Name': req.params.Name })
+app.get('/genre/:Name', passport.authenticate('jwt', {session: false}), (req, res) => {
+    Movies.findOne({ 'Genre.Name': req.params.Name})
         .then((movie) => {
-            res.json(movie.Genre.Description);
+            if(movie){ 
+                res.status(200).json(movie.Genre);
+            } else {
+                res.status(400).send('Genre not found');
+            };
         })
         .catch((err) => {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
+            res.status(500).send('Error: '+ err);
         });
 });
+
 
 //Get all Users
 app.get('/users', passport.authenticate('jwt', { session:false }), (req, res) => {

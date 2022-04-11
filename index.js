@@ -49,16 +49,30 @@ app.get("/documentation", (req, res) => {
 });
 
 //Get all Movies
-app.get('/movies', passport.authenticate('jwt', { session:false }), (req, res) => {
+
+app.get("/movies", function (req, res) {
     Movies.find()
-        .then((movie) => {
-            res.status(201).json(movie);
+        .then(function (movies) {
+            res.status(201).json(movies);
         })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
+        .catch(function (error) {
+            console.error(error);
+            res.status(500).send("Error: " + error);
         });
 });
+
+//Temporarily removing authentication middleware to test React
+
+// app.get('/movies', passport.authenticate('jwt', { session:false }), (req, res) => {
+//     Movies.find()
+//         .then((movie) => {
+//             res.status(201).json(movie);
+//         })
+//         .catch((err) => {
+//             console.error(err);
+//             res.status(500).send('Error: ' + err);
+//         });
+// });
 
 //Get all movies by title
 app.get('/movies/:title', passport.authenticate('jwt', {session: false}), (req, res) => {

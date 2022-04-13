@@ -10,7 +10,7 @@
     "Name" : "Matt Reeves",
         "Bio" : " Matthew George Reeves was born April 27, 1966 in Rockville Center, New York, USA and is a writer, director and producer. Reeves began making movies at age eight, directing friends and using a wind-up camera.",
         "Birth" : "1966"
-},  
+},
     "ImagePath" : "https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_.jpg",
     "Featured" : true
 }

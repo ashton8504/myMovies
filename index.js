@@ -59,7 +59,7 @@ app.get("/documentation", (req, res) => {
 //             console.error(error);
 //             res.status(500).send("Error: " + error);
 //         });
-// });
+// }); 
 
 //Temporarily removing authentication middleware to test React
 
